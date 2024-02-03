@@ -26,7 +26,10 @@
     "@sinclair/typebox": "^0.32.13",
     "fastify": "^4.26.0",
     "fastify-cli": "^6.1.0",
-    "fastify-plugin": "^4.5.1"
+    "fastify-plugin": "^4.5.1",
+    "kysely": "^0.27.2",
+    "kysely-postgres-js": "^2.0.0",
+    "postgres": "^3.4.3"
   },
   "devDependencies": {
     "@types/node": "^20.11.16",
