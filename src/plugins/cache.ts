@@ -4,8 +4,9 @@ import redis from "@fastify/redis";
 export default fp(async (fastify, opts) => {
   /** 注册redis */
   fastify.register(redis, {
-    host: "127.0.0.1",
-    port: 6379,
+    host: fastify.config.REDIS_HOST,
+    port: fastify.config.REDIS_PORT,
+    password: fastify.config.REDIS_PASSWORD,
   });
 
   /** 封装修饰一个cache方法 */

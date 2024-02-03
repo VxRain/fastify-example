@@ -1,16 +1,15 @@
 import { FastifyRequest } from "fastify";
 import fp from "fastify-plugin";
-import fastifyJwt from "@fastify/jwt";
+import jwt from "@fastify/jwt";
 
 export interface AuthOptions {
   jwtSecret: string;
 }
 
 export default fp<AuthOptions>(async (fastify, opts) => {
-  fastify.register(fastifyJwt, {
-    secret: "opts.jwtSecret",
-  });
+  fastify.register(jwt, { secret: fastify.config.JWT_SECRET });
 
+  /** JWT认证，失败抛出401 */
   fastify.decorate("jwtAuth", async (request: FastifyRequest) => {
     try {
       await request.jwtVerify();
@@ -19,6 +18,7 @@ export default fp<AuthOptions>(async (fastify, opts) => {
     }
   });
 
+  /** 可选的JWT认证，用于需要在路由内部鉴权的场景 */
   fastify.decorate("jwtOptionalAuth", async (request: FastifyRequest) => {
     try {
       await request.jwtVerify();

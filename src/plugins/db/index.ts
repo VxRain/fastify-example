@@ -6,13 +6,14 @@ import { Database } from "./schema.type";
 import { cpus } from "os";
 
 export default fp(async (fastify, opts) => {
+  const { config } = fastify;
   const sql = postgres({
-    database: "postgres",
-    host: "localhost",
-    port: 5432,
+    database: config.PG_DATABASE,
+    host: config.PG_HOST,
+    port: config.PG_PORT,
+    user: config.PG_USER,
+    password: config.PG_PASSWORD,
     max: cpus().length * 2 + 1,
-    user: "postgres",
-    pass: "postgres",
   });
 
   try {
