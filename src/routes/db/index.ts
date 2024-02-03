@@ -22,9 +22,8 @@ const dbRoute: FastifyPluginAsyncTypebox = async (fastify, opts): Promise<void> 
   });
 
   fastify.post("/post", {
-    schema: {
-      body: CreatePostSchema,
-    },
+    schema: { body: CreatePostSchema },
+    preHandler: fastify.jwtAuth,
     handler: async function (req, res) {
       await fastify.kysely
         .insertInto("Article")

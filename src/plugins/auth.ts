@@ -14,7 +14,7 @@ export default fp<AuthOptions>(async (fastify, opts) => {
     try {
       await request.jwtVerify();
     } catch (err) {
-      throw fastify.httpErrors.unauthorized("未认证，请重新登录");
+      throw fastify.httpErrors.unauthorized("认证未通过，请重新登录");
     }
   });
 
@@ -28,7 +28,10 @@ export default fp<AuthOptions>(async (fastify, opts) => {
 
 declare module "fastify" {
   export interface FastifyInstance {
-    jwtAuth(request: FastifyRequest): void;
-    jwtOptionalAuth(request: FastifyRequest): void;
+    // Fastify的TypeProvider配合preHandler或onRequest使用时会丢失类型
+    // 这里使用any简单的处理
+    // 参见：https://github.com/fastify/fastify/issues/4120
+    jwtAuth(request: FastifyRequest | any): Promise<void>;
+    jwtOptionalAuth(request: FastifyRequest | any): Promise<void>;
   }
 }
