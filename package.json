@@ -27,6 +27,7 @@
     "@fastify/type-provider-typebox": "^4.0.0",
     "@node-rs/argon2": "^1.7.2",
     "@sinclair/typebox": "^0.32.13",
+    "ajv-i18n": "^4.2.0",
     "fastify": "^4.26.0",
     "fastify-cli": "^6.1.0",
     "fastify-plugin": "^4.5.1",
