@@ -5,16 +5,17 @@ const dbRoute: FastifyPluginAsyncTypebox = async (fastify, opts): Promise<void> 
   fastify.get("/post", {
     schema: { querystring: GetPostSchema },
     handler: async function (req, res) {
+      const { kysely } = fastify;
       if (req.query.id) {
-        const post = await fastify.kysely
-          .selectFrom("Post")
+        const post = await kysely
+          .selectFrom("Article")
           .selectAll()
           .where("id", "=", req.query.id)
           .executeTakeFirst();
         return res.ok({ data: post });
       } else {
         return res.ok({
-          data: await fastify.kysely.selectFrom("Post").selectAll().execute(),
+          data: await kysely.selectFrom("Article").selectAll().execute(),
         });
       }
     },
@@ -26,7 +27,7 @@ const dbRoute: FastifyPluginAsyncTypebox = async (fastify, opts): Promise<void> 
     },
     handler: async function (req, res) {
       await fastify.kysely
-        .insertInto("Post")
+        .insertInto("Article")
         .values({
           title: req.body.title,
           content: req.body.content,

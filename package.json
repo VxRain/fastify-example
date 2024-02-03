@@ -39,6 +39,8 @@
     "@types/node": "^20.11.16",
     "concurrently": "^8.2.2",
     "fastify-tsconfig": "^2.0.0",
+    "kysely-codegen": "^0.11.0",
+    "pg": "^8.11.3",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   }
