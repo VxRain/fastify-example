@@ -22,15 +22,18 @@
     "@fastify/env": "^4.3.0",
     "@fastify/jwt": "^8.0.0",
     "@fastify/redis": "^6.1.1",
+    "@fastify/secure-session": "^7.1.0",
     "@fastify/sensible": "^5.5.0",
     "@fastify/type-provider-typebox": "^4.0.0",
+    "@node-rs/argon2": "^1.7.2",
     "@sinclair/typebox": "^0.32.13",
     "fastify": "^4.26.0",
     "fastify-cli": "^6.1.0",
     "fastify-plugin": "^4.5.1",
     "kysely": "^0.27.2",
     "kysely-postgres-js": "^2.0.0",
-    "postgres": "^3.4.3"
+    "postgres": "^3.4.3",
+    "svg-captcha": "^1.4.0"
   },
   "devDependencies": {
     "@types/node": "^20.11.16",

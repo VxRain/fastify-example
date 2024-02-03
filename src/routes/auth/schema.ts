@@ -1,6 +1,19 @@
-import { Type } from "@fastify/type-provider-typebox";
+import { Type } from "@sinclair/typebox";
+import { SignupSchema } from "../user/schema";
 
-export const loginSchema = Type.Object({
-  username: Type.String(),
-  password: Type.String(),
+export const LoginSchema = SignupSchema;
+
+export const ResScheam = Type.Object({
+  statusCode: Type.Number(),
+  message: Type.Optional(Type.String()),
+  data: Type.Optional(
+    Type.Object({
+      token: Type.String(),
+      userInfo: Type.Object({
+        id: Type.Number(),
+        username: Type.String(),
+        nickname: Type.Optional(Type.String()),
+      }),
+    })
+  ),
 });

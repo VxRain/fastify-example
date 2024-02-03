@@ -24,6 +24,40 @@ export type Post = {
    */
   updatedAt: Timestamp | null;
 };
+
+export type User = {
+  id: Generated<number>;
+  /**
+   * 用户名
+   */
+  username: string;
+  /**
+   * 昵称
+   */
+  nickname: string | null;
+  /**
+   * 密码
+   */
+  password: string | null;
+  /**
+   * 盐
+   */
+  salt: string | null;
+  /**
+   * 邀请人ID
+   */
+  invitorId: number | null;
+  /**
+   * 创建时间
+   */
+  createdAt: Generated<Timestamp>;
+  /**
+   * 更新时间
+   */
+  updatedAt: Timestamp | null;
+};
+
 export interface Database {
   Post: Post;
+  User: User;
 }

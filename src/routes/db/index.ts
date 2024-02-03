@@ -3,9 +3,7 @@ import { CreatePostSchema, GetPostSchema } from "./schema";
 
 const dbRoute: FastifyPluginAsyncTypebox = async (fastify, opts): Promise<void> => {
   fastify.get("/post", {
-    schema: {
-      querystring: GetPostSchema,
-    },
+    schema: { querystring: GetPostSchema },
     handler: async function (req, res) {
       if (req.query.id) {
         const post = await fastify.kysely
